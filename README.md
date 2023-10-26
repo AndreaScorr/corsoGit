@@ -117,6 +117,76 @@ The program is created with 6 functions, so it's possible to have a clear code a
  END PROCEDURE
 ```
 
+### def turn(speed, seconds): ###
+```
+PROCEDURE turn(speed, seconds)
+    /*
+    Function for setting an angular velocity
+
+    Parameters:
+        speed (INTEGER): the speed of the wheels
+        seconds (INTEGER): the time interval
+    */
+
+    R.motors[0].m0.power = speed
+    R.motors[0].m1.power = -speed
+    Sleep(seconds)
+    R.motors[0].m0.power = 0
+    R.motors[0].m1.power = 0
+END PROCEDURE
+```
+
+### find_golden_token(): ###
+```
+  PROCEDURE find_golden_token()
+    /*
+    Function to find the closest golden token
+
+    Returns:
+        dist (REAL): distance of the closest golden token (-1 if no golden token is detected)
+        rot_y (REAL): angle between the robot and the golden token (-1 if no golden token is detected)
+        codeToken (REAL): code of the token
+    */
+
+    dist = 100
+    PRINT(LENGTH(R.see()))
+
+    FOR EACH token IN R.see() DO
+        IF token.dist < dist AND token.info.marker_type IS MARKER_TOKEN_GOLD THEN
+            dist = token.dist
+            rot_y = token.rot_y
+            codeToken = token.info.code
+            PRINT(token.dist)
+        END IF
+    END FOR
+
+    IF dist = 100 THEN
+        RETURN -1, -1, -1
+    ELSE
+        RETURN dist, rot_y, codeToken
+    END IF
+END PROCEDURE
+```
+
+### drive(speed, seconds): ###
+```
+  PROCEDURE drive(speed, seconds)
+    /*
+    Function for setting a linear velocity
+
+    Parameters:
+        speed (INTEGER): the speed of the wheels
+        seconds (INTEGER): the time interval
+    */
+
+    R.motors[0].m0.power = speed
+    R.motors[0].m1.power = speed
+    Sleep(seconds)
+    R.motors[0].m0.power = 0
+    R.motors[0].m1.power = 0
+ END PROCEDURE
+```
+
 
   
   
