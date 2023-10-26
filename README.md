@@ -73,12 +73,36 @@ Each `Marker` object has the following attributes:
 
 
 
-## Structure of the code
+ 
+Structure of the code
+----------------------
 The program is created with 6 functions, so it's possible to have a clear code and use the advantage of modularity:
 
 * ```python
   def drive(speed, seconds):
   ```
+* ```python
+  def turn(speed, seconds):
+  ```
+* ```python
+  def find_golden_token():
+  ```
+* ```python
+  def init():
+  ```
+* ```python
+  def bringBoxNearTheGrayArea(tokenToApproach):
+  ```
+* ```python
+  def alignToghetherBoxes(tokenToAlignTogether):
+  ```
+## Pseudocode of functions ##
+------------------------------
+
+  
+  
+
+  
 
 
 
