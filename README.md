@@ -74,7 +74,7 @@ Each `Marker` object has the following attributes:
 
 
  
-## Structure of the code ##
+Structure of the code 
 ----------------------
 The program is created with 6 functions, so it's possible to have a clear code and use the advantage of modularity:
 
@@ -97,7 +97,26 @@ The program is created with 6 functions, so it's possible to have a clear code a
   def alignToghetherBoxes(tokenToAlignTogether):
   ```
 ## Pseudocode of functions ##
-------------------------------
+
+### drive(speed, seconds): ###
+```
+  PROCEDURE drive(speed, seconds)
+    /*
+    Function for setting a linear velocity
+
+    Parameters:
+        speed (INTEGER): the speed of the wheels
+        seconds (INTEGER): the time interval
+    */
+
+    R.motors[0].m0.power = speed
+    R.motors[0].m1.power = speed
+    Sleep(seconds)
+    R.motors[0].m0.power = 0
+    R.motors[0].m1.power = 0
+ END PROCEDURE
+```
+
 
   
   
