@@ -74,7 +74,7 @@ Each `Marker` object has the following attributes:
 
 
  
-Structure of the code
+## Structure of the code ##
 ----------------------
 The program is created with 6 functions, so it's possible to have a clear code and use the advantage of modularity:
 
