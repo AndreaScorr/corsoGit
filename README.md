@@ -1,6 +1,9 @@
 Research track 1 
+==================
 Andrea Scorrano
-====================
+
+id: 6463777
+
 This is the first assignment of Research Track:
 
 Write a python node that controls the robot to put all the golden boxes together.
@@ -303,7 +306,7 @@ END PROCEDURE
 ```
 
 ## Results ##
------------------
+
 ### Init phase ###
 
 ![alt text](https://github.com/AndreaScorr/corsoGit/blob/main/init.png?raw=true)
