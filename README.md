@@ -305,14 +305,23 @@ END PROCEDURE
 ## Results ##
 -----------------
 ### Init phase ###
-The robot is placed in the center
 
 ![alt text](https://github.com/AndreaScorr/corsoGit/blob/main/init.png?raw=true)
 
+The robot is placed in the center
+
 ### Approaching phase ###
-The robot has putted the boxes near the gray area.
 
 ![alt text](https://github.com/AndreaScorr/corsoGit/blob/main/nearBox.png?raw=true)
+
+The robot has putted the boxes near the gray area.
+
+
+### Alignment phase ###
+![alt text](https://github.com/AndreaScorr/corsoGit/blob/main/alignedBox.png?raw=true)
+
+The robot has aligned the boxes to the center of the area
+
 
 
 
