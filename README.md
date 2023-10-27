@@ -307,7 +307,7 @@ END PROCEDURE
 ### init phase ###
 The robot is placed in the center
 
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+![alt text](https://github.com/AndreaScorr/corsoGit/blob/main/init.png?raw=true)
 
 
 
