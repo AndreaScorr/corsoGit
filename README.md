@@ -210,7 +210,47 @@ END PROCEDURE
   PROCEDURE bringBoxNearTheGrayArea(tokenToApproach)
 
     # While there are tokens left in the ToDoList
-    While not IsListEmpty(tokenToApproach):
+    WHILE not IsListEmpty(tokenToApproach):
+        # Find the distance, rotation angle, and code of the nearest golden token
+        distance, rotation_angle, codeToken = find_golden_token()
+        
+        # If no token is detected, turn the robot to the left
+        IF distance == -1:
+            Print("I don't see any token!!")
+            TurnLeftSlightly()
+        # IF we are close to the token, attempt to grab it
+        ELSEIF distance < d_th:
+            Print("Found it!", codeToken)
+            
+            # If the robot successfully grabs the token, perform the following actions
+            IF R.grab():
+                Print("Gotcha!")
+                MoveRobotBackward()
+                ReleaseTheBox()
+                TurnLeftSlightly()
+                # Remove the token from the ToDoList
+                tokenToApproach.remove(codeToken)
+                Print('Remaining tokens (ToDoList):', tokenToApproach)
+            ELSE:
+                Print("Aww, I'm not close enough.")
+        # IF the robot is well aligned with the token, move forward
+        ELSEIF -a_th <= rotation_angle <= a_th:
+            Print("Ah, that'll do.")
+            MoveRobotForward()
+        # If the robot is not well aligned with the token, adjust its position
+        ELSEIF rotation_angle < -a_th:
+            Print("Left a bit...")
+            TurnLeftSlightly()
+        ELSEIF rotation_angle > a_th:
+            Print("Right a bit...")
+            TurnRightSlightly()
+ END PROCEDURE
+```
+### alignToghetherBoxes(tokenToAlignTogether): ###
+```
+  PROCEDURE alignToghetherBoxes(tokenToAlignTogether)
+   # While there are tokens left in the ToDoList
+    While not IsListEmpty(tokenToAlignTogether):
         # Find the distance, rotation angle, and code of the nearest golden token
         distance, rotation_angle, codeToken = find_golden_token()
         
@@ -220,23 +260,25 @@ END PROCEDURE
             TurnLeftSlightly()
         # If we are close to the token, attempt to grab it
         ElseIf distance < d_th:
-            Print("Found it!", codeToken)
+            Print("Found it!")
             
             # If the robot successfully grabs the token, perform the following actions
             If R.grab():
                 Print("Gotcha!")
-                MoveRobotBackward()
+                TurnLeft(21, 2)  # Turn left with 21 speed for 2 seconds
+                DriveForward(21, 3)  # Move forward with 21 speed for 3 seconds
                 ReleaseTheBox()
-                TurnLeftSlightly()
+                DriveBackward(21, 3)  # Move backward whit 21 speed for 3 seconds
+                TurnRight(21, 2)  # Turn right by with 21 speed for 3 seconds
                 # Remove the token from the ToDoList
-                tokenToApproach.remove(codeToken)
-                Print('Remaining tokens (ToDoList):', tokenToApproach)
+                tokenToAlignTogether.remove(codeToken)
+                Print('Remaining tokens (ToDoList):', tokenToAlignTogether)
             Else:
                 Print("Aww, I'm not close enough.")
         # If the robot is well aligned with the token, move forward
         ElseIf -a_th <= rotation_angle <= a_th:
             Print("Ah, that'll do.")
-            MoveRobotForward()
+            DriveForward(20, 0.5)  # Move forward with 20 speed for 0.5 seconds
         # If the robot is not well aligned with the token, adjust its position
         ElseIf rotation_angle < -a_th:
             Print("Left a bit...")
@@ -246,6 +288,7 @@ END PROCEDURE
             TurnRightSlightly()
  END PROCEDURE
 ```
+
 
 
   
