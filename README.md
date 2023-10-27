@@ -82,12 +82,20 @@ The program is created with 6 functions, so it's possible to have a clear code a
   def drive(speed, seconds):
   ```
   Move the robot with `speed` for `seconds`
+  
 * ```python
   def turn(speed, seconds):
   ```
+  Turn tje robot with `speed` for `seconds`
+  
 * ```python
   def find_golden_token():
   ```
+Use the metod 
+``` python 
+R.see()
+```
+  
 * ```python
   def init():
   ```
