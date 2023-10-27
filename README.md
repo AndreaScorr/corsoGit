@@ -172,7 +172,7 @@ END PROCEDURE
 ```
   PROCEDURE InitializeRobot():
 
-    # Drive the robot forward for 5 units at a speed of 60
+    # Drive the robot forward for 5 units at a speed of 60 (set around the center)
     drive(60, 5)
 
     # Initialize an empty list to store tokens
@@ -203,6 +203,48 @@ END PROCEDURE
     # Return the lists of tokens for approaching and alignment
     Return tokenToApproach, tokenToAlignTogether
   END PROCEDURE
+```
+
+### bringBoxNearTheGrayArea(tokenToApproach): ###
+```
+  PROCEDURE bringBoxNearTheGrayArea(tokenToApproach)
+
+    # While there are tokens left in the ToDoList
+    While not IsListEmpty(tokenToApproach):
+        # Find the distance, rotation angle, and code of the nearest golden token
+        distance, rotation_angle, codeToken = find_golden_token()
+        
+        # If no token is detected, turn the robot to the left
+        If distance == -1:
+            Print("I don't see any token!!")
+            TurnLeftSlightly()
+        # If we are close to the token, attempt to grab it
+        ElseIf distance < d_th:
+            Print("Found it!", codeToken)
+            
+            # If the robot successfully grabs the token, perform the following actions
+            If R.grab():
+                Print("Gotcha!")
+                MoveRobotBackward()
+                ReleaseTheBox()
+                TurnLeftSlightly()
+                # Remove the token from the ToDoList
+                tokenToApproach.remove(codeToken)
+                Print('Remaining tokens (ToDoList):', tokenToApproach)
+            Else:
+                Print("Aww, I'm not close enough.")
+        # If the robot is well aligned with the token, move forward
+        ElseIf -a_th <= rotation_angle <= a_th:
+            Print("Ah, that'll do.")
+            MoveRobotForward()
+        # If the robot is not well aligned with the token, adjust its position
+        ElseIf rotation_angle < -a_th:
+            Print("Left a bit...")
+            TurnLeftSlightly()
+        ElseIf rotation_angle > a_th:
+            Print("Right a bit...")
+            TurnRightSlightly()
+ END PROCEDURE
 ```
 
 
