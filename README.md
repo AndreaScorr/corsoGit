@@ -170,21 +170,39 @@ END PROCEDURE
 
 ### init(): ###
 ```
-  PROCEDURE drive(speed, seconds)
-    /*
-    Function for setting a linear velocity
+  PROCEDURE InitializeRobot():
 
-    Parameters:
-        speed (INTEGER): the speed of the wheels
-        seconds (INTEGER): the time interval
-    */
+    # Drive the robot forward for 5 units at a speed of 60
+    drive(60, 5)
 
-    R.motors[0].m0.power = speed
-    R.motors[0].m1.power = speed
-    Sleep(seconds)
-    R.motors[0].m0.power = 0
-    R.motors[0].m1.power = 0
- END PROCEDURE
+    # Initialize an empty list to store tokens
+    tokens = []
+
+    # Turn around to observe available tokens
+    FOR i in range(0, 12):
+        # Print information about tokens in the environment
+        Print(R.see(), '\n')
+        
+        # Turn the robot counterclockwise by 10 Speed for 1 second
+        turn(-10, 1)
+
+        # Iterate through the list of tokens visible to the robot
+        FOR each token in R.see():
+            # Check if the token's code is not already in the list of tokens
+            IF token.info.code is not in tokens:
+                # Add the token's code to the list
+                tokens.append(token.info.code)
+
+    # Print the list of collected tokens
+    Print(tokens)
+
+    # Create two copies of the list of tokens for different purposes
+    tokenToApproach = CopyList(tokens)
+    tokenToAlignTogether = CopyList(tokens)
+
+    # Return the lists of tokens for approaching and alignment
+    Return tokenToApproach, tokenToAlignTogether
+  END PROCEDURE
 ```
 
 
