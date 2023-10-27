@@ -168,7 +168,7 @@ END PROCEDURE
 END PROCEDURE
 ```
 
-### drive(speed, seconds): ###
+### init(): ###
 ```
   PROCEDURE drive(speed, seconds)
     /*
