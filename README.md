@@ -302,6 +302,13 @@ END PROCEDURE
  END PROCEDURE
 ```
 
+## Results ##
+-----------------
+### init phase ###
+The robot is placed in the center
+
+![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+
 
 
   
