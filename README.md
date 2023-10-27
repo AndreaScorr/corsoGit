@@ -266,20 +266,20 @@ END PROCEDURE
 ```
   PROCEDURE alignToghetherBoxes(tokenToAlignTogether)
    # While there are tokens left in the ToDoList
-    While not IsListEmpty(tokenToAlignTogether):
+    WHILE not IsListEmpty(tokenToAlignTogether):
         # Find the distance, rotation angle, and code of the nearest golden token
         distance, rotation_angle, codeToken = find_golden_token()
         
         # If no token is detected, turn the robot to the left
-        If distance == -1:
+        IF distance == -1:
             Print("I don't see any token!!")
             TurnLeftSlightly()
-        # If we are close to the token, attempt to grab it
-        ElseIf distance < d_th:
+        # if we are close to the token, attempt to grab it
+        ELSEIF distance < d_th:
             Print("Found it!")
             
             # If the robot successfully grabs the token, perform the following actions
-            If R.grab():
+            IF R.grab():
                 Print("Gotcha!")
                 TurnLeft(21, 2)  # Turn left with 21 speed for 2 seconds
                 DriveForward(21, 3)  # Move forward with 21 speed for 3 seconds
@@ -289,23 +289,31 @@ END PROCEDURE
                 # Remove the token from the ToDoList
                 tokenToAlignTogether.remove(codeToken)
                 Print('Remaining tokens (ToDoList):', tokenToAlignTogether)
-            Else:
+            ELSE:
                 Print("Aww, I'm not close enough.")
-        # If the robot is well aligned with the token, move forward
-        ElseIf -a_th <= rotation_angle <= a_th:
+        # IF the robot is well aligned with the token, move forward
+        ELSEIF -a_th <= rotation_angle <= a_th:
             Print("Ah, that'll do.")
             DriveForward(20, 0.5)  # Move forward with 20 speed for 0.5 seconds
         # If the robot is not well aligned with the token, adjust its position
-        ElseIf rotation_angle < -a_th:
+        ELSEIF rotation_angle < -a_th:
             Print("Left a bit...")
             TurnLeftSlightly()
-        ElseIf rotation_angle > a_th:
+        ELSEIF rotation_angle > a_th:
             Print("Right a bit...")
             TurnRightSlightly()
  END PROCEDURE
 ```
 
 ## Results ##
+
+To have everything compact these three functions were invoked in the script:
+```python
+tokenToApproach, tokenToAlignTogether=init()
+bringBoxNearTheGrayArea(tokenToApproach)        
+alignToghetherBoxes(tokenToAlignTogether)
+print("work done!")
+```
 
 ### Init phase ###
 
