@@ -1,10 +1,8 @@
-Research track 1 
+Research track 1 First assignment
 ==================
 Andrea Scorrano
 
 id: 6463777
-
-This is the first assignment of Research Track:
 
 Write a python node that controls the robot to put all the golden boxes together.
 
