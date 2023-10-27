@@ -81,6 +81,7 @@ The program is created with 6 functions, so it's possible to have a clear code a
 * ```python
   def drive(speed, seconds):
   ```
+  Move the robot with `speed` for `seconds`
 * ```python
   def turn(speed, seconds):
   ```
