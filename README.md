@@ -142,11 +142,11 @@ PROCEDURE turn(speed, seconds)
         seconds (INTEGER): the time interval
     */
 
-    R.motors[0].m0.power = speed
-    R.motors[0].m1.power = -speed
+    set motor m0.power = speed
+    set motor m1.power = -speed
     Sleep(seconds)
-    R.motors[0].m0.power = 0
-    R.motors[0].m1.power = 0
+    set motor m0.power = 0
+    set motor m1.power = 0
 END PROCEDURE
 ```
 
@@ -166,11 +166,10 @@ END PROCEDURE
     PRINT(LENGTH(R.see()))
 
     FOR EACH token IN R.see() DO
-        IF token.dist < dist AND token.info.marker_type IS MARKER_TOKEN_GOLD THEN
-            dist = token.dist
-            rot_y = token.rot_y
-            codeToken = token.info.code
-            PRINT(token.dist)
+        IF token.dist < dist AND token_marker_is_gold THEN
+            dist = token_dist
+            rot_y = token_rot_y
+            codeToken = token_code
         END IF
     END FOR
 
@@ -187,7 +186,7 @@ END PROCEDURE
   PROCEDURE InitializeRobot():
 
     # Drive the robot forward for 5 units at a speed of 60 (set around the center)
-    drive(60, 5)
+    go_straight
 
     # Initialize an empty list to store tokens
     tokens = []
@@ -198,12 +197,12 @@ END PROCEDURE
         Print(R.see(), '\n')
         
         # Turn the robot counterclockwise by 10 Speed for 1 second
-        turn(-10, 1)
+        turn_left
 
         # Iterate through the list of tokens visible to the robot
         FOR each token in R.see():
             # Check if the token's code is not already in the list of tokens
-            IF token.info.code is not in tokens:
+            IF token_code_is_not_already_in_the_list:
                 # Add the token's code to the list
                 tokens.append(token.info.code)
 
@@ -229,7 +228,7 @@ END PROCEDURE
         distance, rotation_angle, codeToken = find_golden_token()
         
         # If no token is detected, turn the robot to the left
-        IF distance == -1:
+        IF no_marker_Detected:
             Print("I don't see any token!!")
             TurnLeftSlightly()
         # IF we are close to the token, attempt to grab it
@@ -237,7 +236,7 @@ END PROCEDURE
             Print("Found it!", codeToken)
             
             # If the robot successfully grabs the token, perform the following actions
-            IF R.grab():
+            IF Robot_has_grabbed:
                 Print("Gotcha!")
                 MoveRobotBackward()
                 ReleaseTheBox()
@@ -269,7 +268,7 @@ END PROCEDURE
         distance, rotation_angle, codeToken = find_golden_token()
         
         # If no token is detected, turn the robot to the left
-        IF distance == -1:
+        IF no_marker_detected:
             Print("I don't see any token!!")
             TurnLeftSlightly()
         # if we are close to the token, attempt to grab it
@@ -277,7 +276,7 @@ END PROCEDURE
             Print("Found it!")
             
             # If the robot successfully grabs the token, perform the following actions
-            IF R.grab():
+            IF Robot_has_grabbed:
                 Print("Gotcha!")
                 TurnLeft(21, 2)  # Turn left with 21 speed for 2 seconds
                 DriveForward(21, 3)  # Move forward with 21 speed for 3 seconds
