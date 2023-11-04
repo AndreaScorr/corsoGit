@@ -336,6 +336,10 @@ https://github.com/AndreaScorr/corsoGit/blob/main/SimulationTimeLaps.mp4
 
 
 
+https://github.com/AndreaScorr/corsoGit/assets/40230364/3711bfbc-62d0-4054-b331-74cef737a7e4
+
+
+
 
 ## Possible improvements ##
 This robot has the objective to put together the boxes. To reach the goal, the robot put itself in the middle of the gray area, turn around itself to see the boxes that has to put togheter, put them near the gray area, and do a sort of a circle to put the boxes in the middle.
