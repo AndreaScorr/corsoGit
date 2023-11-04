@@ -330,6 +330,13 @@ The robot has putted the boxes near the gray area.
 
 The robot has aligned the boxes to the center of the area
 
+### TimeLaps  of the simulation ###
+The robot is a little bit slow, to speed up the view of the results here it is a video that shows how the robot works.
+https://github.com/AndreaScorr/corsoGit/blob/main/SimulationTimeLaps.mp4
+
+
+
+
 ## Possible improvements ##
 This robot has the objective to put together the boxes. To reach the goal, the robot put itself in the middle of the gray area, turn around itself to see the boxes that has to put togheter, put them near the gray area, and do a sort of a circle to put the boxes in the middle.
 Future developments could be an increase of the execution speed, and implements the software on a real robot. Maybe the method `R.see()` could be replaced by a camera and using computer vision algoritms to detect the gold boxes and the mehod `R.grab()` could be replaced by real end effector, fit for purpose.
