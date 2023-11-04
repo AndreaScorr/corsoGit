@@ -332,10 +332,6 @@ The robot has aligned the boxes to the center of the area
 
 ### TimeLaps  of the simulation ###
 The robot is a little bit slow, to speed up the view of the results here it is a video that shows how the robot works.
-https://github.com/AndreaScorr/corsoGit/blob/main/SimulationTimeLaps.mp4
-
-
-
 https://github.com/AndreaScorr/corsoGit/assets/40230364/3711bfbc-62d0-4054-b331-74cef737a7e4
 
 
