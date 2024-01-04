@@ -1,0 +1,10 @@
+#goal definition
+int32 des_x
+int32 des_y
+---
+#result definition
+
+---
+#feedback
+int32 current_x
+int32 current_y

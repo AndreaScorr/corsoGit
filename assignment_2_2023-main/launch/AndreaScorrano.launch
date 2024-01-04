@@ -1,0 +1,9 @@
+<launch>
+<arg name="des_window" />
+
+<param name="des_window" value="$(arg des_window)" />
+<node pkg="assignment_2_2023" type="setTarget" name="setTarget" output="screen" />
+<node pkg="assignment_2_2023" type="lastTarget" name="lastTarget" output="screen" />
+<node pkg="assignment_2_2023" type="positionAndVelocitySubscriber" name="positionAndVelocitySubscriber" output="screen" />
+
+</launch>
